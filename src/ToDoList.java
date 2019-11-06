@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 
 public class ToDoList {
 	private HashMap<String, Task> tasks = new HashMap<String, Task>();
@@ -34,5 +35,23 @@ public class ToDoList {
 	public Collection<Task> getCompletedTasks() {
 		// Add code here
 		return null;
+	}
+	
+	public Collection<Task> partialWordSearchTasks(String description) {
+		Collection<Task> taskCollection = tasks.values();
+		
+		ArrayList<Task> toRemove = new ArrayList();
+				
+		for (Task t: taskCollection) {
+			if (!t.getDescription().contains(description)) {
+				toRemove.add(t);
+			}
+		}
+		
+		for (Task t: toRemove) {
+			taskCollection.remove(t);
+		}
+		
+		return taskCollection;
 	}
 }
