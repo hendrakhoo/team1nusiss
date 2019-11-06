@@ -22,9 +22,9 @@ public class ToDoList {
 		return tasks.get(description);
 	}
 
-	public Task removeTask(String description) {
-		// Add code here
-		return null;
+	public String removeTask(String description) {
+		tasks.remove(description);
+		return description;
 	}
 
 	public Collection<Task> getAllTasks() {
