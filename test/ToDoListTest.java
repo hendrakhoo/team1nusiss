@@ -70,4 +70,17 @@ public class ToDoListTest {
 		Collection<Task> tasks = todoList.getCompletedTasks();
 		assertEquals(2, tasks.size());
 	}
+
+	@Test
+	void testCompleteTask() {
+		String description = "Hello";
+		Task task = new Task(description);
+
+		ToDoList list = new ToDoList();
+		list.addTask(task);
+		assertFalse(list.getTask(description).isComplete());
+
+		list.completeTask(description);
+		assertTrue(list.getTask(description).isComplete());
+	}
 }

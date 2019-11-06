@@ -44,4 +44,22 @@ public class ToDoList {
 		}
 		return completedTask;
 	}
+	
+	public Collection<Task> partialWordSearchTasks(String description) {
+		Collection<Task> taskCollection = tasks.values();
+		
+		ArrayList<Task> toRemove = new ArrayList();
+				
+		for (Task t: taskCollection) {
+			if (!t.getDescription().contains(description)) {
+				toRemove.add(t);
+			}
+		}
+		
+		for (Task t: toRemove) {
+			taskCollection.remove(t);
+		}
+		
+		return taskCollection;
+	}
 }
