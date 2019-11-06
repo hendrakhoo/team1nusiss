@@ -70,17 +70,27 @@ public class ToDoListTest {
 		Collection<Task> tasks = todoList.getCompletedTasks();
 		assertEquals(2, tasks.size());
 	}
+	
+	@Test
+	public void testCompleteTask() {
+		todoList.addTask(task1);
+		assertFalse(todoList.getTask(task1.getDescription()).isComplete());
+
+		todoList.completeTask(task1.getDescription());
+		assertTrue(todoList.getTask(task1.getDescription()).isComplete());
+	}
 
 	@Test
-	void testCompleteTask() {
-		String description = "Hello";
-		Task task = new Task(description);
-
-		ToDoList list = new ToDoList();
-		list.addTask(task);
-		assertFalse(list.getTask(description).isComplete());
-
-		list.completeTask(description);
-		assertTrue(list.getTask(description).isComplete());
+	public void testPartialWordSearch() {
+		Task task = new Task("Day 2");
+		
+		todoList.addTask(task);
+		todoList.addTask(task1);
+		todoList.addTask(task2);
+		todoList.addTask(task3);
+		
+		Collection<Task> actual = todoList.partialWordSearchTasks("2");
+		
+		assertTrue(actual.contains(task) && actual.contains(task2) && !actual.contains(task1) && !actual.contains(task3));
 	}
 }
