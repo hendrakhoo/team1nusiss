@@ -3,29 +3,34 @@ import java.util.Collection;
 import java.util.HashMap;
 
 public class ToDoList {
-private HashMap<String, Task> tasks = new HashMap<String, Task>();
+	private HashMap<String, Task> tasks = new HashMap<String, Task>();
 
-	public void addTask (Task task) {
-		//Add code here
+	public void addTask(Task task) {
+		// Add code here
 	}
+
 	public void completeTask(String description) {
-		// Add code here
+		Task task = tasks.get(description);
+		task.setComplete(true);
 	}
+
 	public boolean getStatus(String description) {
-		//Add code here
-		return false;
+		return tasks.get(description).isComplete();
 	}
+
 	public Task getTask(String description) {
-		// Add code here
-		return null;
+		return tasks.get(description);
 	}
+
 	public Task removeTask(String description) {
 		// Add code here
 		return null;
 	}
+
 	public Collection<Task> getAllTasks() {
 		return tasks.values();
 	}
+
 	public Collection<Task> getCompletedTasks() {
 		// Add code here
 		return null;
